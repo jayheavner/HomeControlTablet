@@ -1,0 +1,57 @@
+// @import util/util
+// @import util/icon-font/icon-font-util
+// @import base/base
+// @import vendors/bul
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+// Needed for $gap
+@import "~bulma/sass/utilities/initial-variables";
+$menu-label-color: $grey-lighter;
+$menu-item-color: $white-ter;
+$menu-item-active-background-color: $black-ter;
+// image sizes
+$dimensions: 16,
+24,
+32,
+48,
+64,
+96,
+128,
+200,
+256,
+300;
+$box-color: #fff;
+@import url('https://fonts.googleapis.com/css?family=Roboto|Thasadith:400,700');
+// Now, import the full package
+@import "~bulma";
+@import '~bulma-helpers';
+// tile.is-gapless {
+//   .tile.is-parent {
+//     padding: 0;
+//   }
+//   .tile.is-vertical>.tile.is-child:not(:last-child) {
+//     margin-bottom: 0 !important;
+//   }
+// }
+$toggler-color: $white-bis;
+$toggler-checked-color: $toggler-color;
+$toggler-focus-color:$grey-lighter;
+$drawer-bgcolor: #374c5d !default;
+@import 'vendors/slider';
+@import 'vendors/bulma-extensions';
+@import 'util/util';
+@import 'util/icon-font/icon-font-util';
+// @import 'base/base';
+@import 'vendors/optiscroll';
+
+.opaque-light {
+  background: rgba(255, 255, 255, .3);
+}
+
+.opaque-dark {
+  background: rgba(0, 0, 0, .3);
+}
+
+// hide scrollbar in Chrome
+::-webkit-scrollbar {
+  display: none;
+}
