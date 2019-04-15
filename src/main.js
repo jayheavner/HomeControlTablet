@@ -5,7 +5,8 @@ import router from './router';
 import store from './store';
 
 import VModal from 'vue-js-modal';
-import vueSlider from 'vue-slider-component';
+import VueSlider from 'vue-slider-component';
+import 'vue-slider-component/theme/default.css';
 import Icon from 'vue-awesome/components/Icon';
 import VueMoment from 'vue-moment';
 import VueLazyload from 'vue-lazyload';
@@ -16,7 +17,7 @@ import 'optiscroll';
 import 'vue-awesome/icons';
 
 Vue.component('icon', Icon);
-Vue.component('vueSlider', vueSlider);
+Vue.component('VueSlider', VueSlider);
 
 Vue.use(VModal, {
   dialog: true,
@@ -38,7 +39,8 @@ import {
   faCaretDown,
   faArrowLeft,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faExpandArrowsAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -50,7 +52,8 @@ library.add(
   faCaretDown,
   faArrowLeft,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faExpandArrowsAlt
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

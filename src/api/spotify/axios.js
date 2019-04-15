@@ -8,7 +8,10 @@ const request = axios.create({
 });
 
 const auth = axios.create({
-  baseURL: 'https://spotify.beavners.com'
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? process.env.VUE_APP_PROD_SPOTIFY_ADDY
+      : process.env.VUE_APP_DEV_SPOTIFY_ADDY
 });
 
 request.interceptors.request.use(async config => {
@@ -24,11 +27,12 @@ request.interceptors.response.use(
       'background-color: blue; color: white;'
     );
     if (
-      config.request.responseURL.indexOf('/v1/me/player') > 0 &&
+      config.request.responseURL.indexOf('/v1/me/player/') > 0 &&
       config.config.method !== 'get'
-    )
+    ) {
+      debugger;
       store.dispatch('player/setPlayback');
-
+    }
     console.log(config);
     return config;
   },

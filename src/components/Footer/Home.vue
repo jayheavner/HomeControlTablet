@@ -2,29 +2,29 @@
   <nav class="navbar opaque-dark is-fixed-bottom">
     <div class="navbar-menu">
       <div class="navbar-start is-expanded">
-        <router-link :to="{ name: 'home' }" class="navbar-item">
+        <router-link :to="{ name: 'lights' }" class="navbar-item">
           <icon name="home" />
-          Home
+          Lights
         </router-link>
 
-        <router-link :to="{ name: 'spotify-speakers' }" class="navbar-item">
+        <router-link :to="{ name: 'music' }" class="navbar-item">
           <icon name="music" />
-          Rooms
+          Music
         </router-link>
 
         <router-link :to="{ name: 'spotify-search' }" class="navbar-item">
           <icon name="search" />
-          Search
+          Travel
         </router-link>
 
         <router-link :to="{ name: 'spotify-browse' }" class="navbar-item">
           <icon name="compass" />
-          Browse
+          Weather
         </router-link>
 
         <router-link :to="{ name: 'spotify-library' }" class="navbar-item">
           <icon name="archive" />
-          Library
+          Status
         </router-link>
       </div>
     </div>

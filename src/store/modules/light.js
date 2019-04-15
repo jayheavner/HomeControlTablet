@@ -27,10 +27,8 @@ const mutations = {
 };
 
 const actions = {
-  async initialize({ commit }) {
+  async initialize({ commit, zone }) {
     console.log('%cLight Initialize');
-    debugger;
-
     const all = await api.ha.getStates();
     const zones = buildList(
       ZoneModel,
@@ -48,8 +46,7 @@ const actions = {
 
     // const zones = buildList(ZoneModel, msg, 'group.lights_view');
     commit('SET_ZONES', zones);
-
-    commit('SET_ZONE', state.zones[0]);
+    commit('SET_ZONE', state.zones.find(z => z.entity_id === zone));
   },
   updateLight({ commit }, light) {
     if (light.event !== undefined) light = new LightModel(light.event.data);
@@ -61,6 +58,7 @@ const actions = {
     commit('SET_LIGHTS', lights);
   },
   changeZone({ commit }, entity_id) {
+    debugger;
     commit('SET_ZONE', state.zones.find(z => z.entity_id === entity_id));
   }
 };

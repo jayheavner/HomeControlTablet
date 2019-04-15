@@ -36,6 +36,7 @@ $toggler-color: $white-bis;
 $toggler-checked-color: $toggler-color;
 $toggler-focus-color:$grey-lighter;
 $drawer-bgcolor: #374c5d !default;
+
 @import 'vendors/slider';
 @import 'vendors/bulma-extensions';
 @import 'util/util';

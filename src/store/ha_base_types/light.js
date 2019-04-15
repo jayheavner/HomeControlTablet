@@ -1,3 +1,4 @@
+import router from '@/router';
 import api from '@/api';
 import { LightModel, ZoneModel } from '@/models';
 import { upsertArray } from '@/utils';
@@ -27,10 +28,8 @@ const mutations = {
 };
 
 const actions = {
-  async initialize({ commit }, msg) {
+  async initialize({ state, commit }, zone) {
     console.log('%cLight Initialize');
-    debugger;
-
     const all = await api.ha.getStates();
     const zones = buildList(
       ZoneModel,
@@ -43,13 +42,14 @@ const actions = {
       all
     );
 
-    // const lights = buildList(LightModel, msg, 'group.house_lights');
     commit('SET_LIGHTS', lights);
 
-    // const zones = buildList(ZoneModel, msg, 'group.lights_view');
     commit('SET_ZONES', zones);
 
-    commit('SET_ZONE', state.zones[0]);
+    // right now a default call to lights renders the first zone in the list
+    // todo: tie this to the device in the room
+    if (zone === undefined) router.push(`/light/${state.zones[0].entity_id}`);
+    else commit('SET_ZONE', state.zones.find(z => z.entity_id === zone));
   },
   updateStateChange({ commit }, light) {
     light = new LightModel(light.event.data);
@@ -70,7 +70,6 @@ const actions = {
     commit('SET_LIGHTS', lights);
   },
   update({ commit }, light) {
-    debugger;
     if (light.data !== undefined) light = new LightModel(light.data);
     let lights = upsertArray(
       [...state.lights],

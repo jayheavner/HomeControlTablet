@@ -1,10 +1,12 @@
 import axios from 'axios';
 
+const haBaseUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_PROD_HA_ADDY
+    : process.env.VUE_APP_PROD_HA_ADDY;
+
 const req = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'production'
-      ? process.env.VUE_APP_HA_ADDY
-      : 'http://192.168.3.6:8123',
+  baseURL: haBaseUrl,
   headers: {
     'x-ha-access': process.env.VUE_APP_HA_TOKEN
   }
@@ -14,7 +16,6 @@ req.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
 // private methods
 const postService = async (entity_id, domain, service, data) => {
-  console.log(req.defaults);
   console.log(
     `calling /api/services/${domain}/${service} \nwith \n    ${data}`
   );

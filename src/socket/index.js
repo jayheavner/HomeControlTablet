@@ -1,7 +1,14 @@
 import store from '@/store';
 import { getDomain } from '@/utils';
 
-const url = 'wss://home.beavners.com/api/websocket';
+const url =
+  process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_PROD_SOCKET_ADDY
+    : process.env.VUE_APP_DEV_SOCKET_ADDY;
+
+console.log(`environment > ${process.env.NODE_ENV}`);
+console.log(`socket URL > ${url}`);
+
 const connection = new WebSocket(url);
 
 const isOpen = ws => {

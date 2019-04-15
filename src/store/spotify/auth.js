@@ -1,9 +1,3 @@
-import axios from 'axios';
-
-const req = axios.create({
-  baseURL: 'https://spotify.beavners.com'
-});
-
 const state = {
   accessToken: ''
 };

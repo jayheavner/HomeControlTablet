@@ -49,4 +49,7 @@ export default {
 };
 </script>
 
-<style scoped lang="sass"></style>
+<style scoped lang="sass">
+.button.is-large
+  height: 4em
+</style>

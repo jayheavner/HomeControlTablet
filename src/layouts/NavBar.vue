@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <router-view />
-    <router-view name="footer" class="navbar is-dark is-fixed-bottom" />
+    <router-view name="footer" />
   </div>
 </template>
 

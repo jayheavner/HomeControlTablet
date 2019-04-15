@@ -4,7 +4,7 @@
     <vue-slider
       v-model="volume"
       class="volume-bar__slider"
-      :tooltip="false"
+      :tooltip="'none'"
       :dot-size="15"
       :process-style="{ background: '#1db954' }"
       :bg-style="{ background: '#737575', width: '80px' }"

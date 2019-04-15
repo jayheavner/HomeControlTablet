@@ -2,11 +2,17 @@ import axios from 'axios';
 import { getDomain } from '@/utils';
 import store from '@/store';
 
+console.log('%cI am in the HA base code file', 'background:red');
+
+const haBaseUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_PROD_HA_ADDY
+    : process.env.VUE_APP_PROD_HA_ADDY;
+
+console.log(`ha base Url > ${haBaseUrl}`);
+
 const req = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'production'
-      ? process.env.VUE_APP_HA_ADDY
-      : 'http://192.168.3.6:8123',
+  baseURL: haBaseUrl,
   headers: {
     'x-ha-access': process.env.VUE_APP_HA_TOKEN
   }
@@ -21,6 +27,7 @@ export default {
     return req.get(`/api/states/${entity_id}`);
   },
   async getStates() {
+    console.log('%cI am in the HA base getStates()', 'background:red');
     return req.get('/api/states');
   },
   async postService(entity_id, domain, service, data) {

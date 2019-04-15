@@ -19,7 +19,6 @@ Vue.component('footer-layout', Footer);
 
 //views
 import HomeView from '@/views/Home';
-import ModalView from '@/views/Modal';
 import LightView from '@/views/Lights';
 import MusicView from '@/views/Music';
 import ArtistView from '@/views/Spotify/Artist';
@@ -37,9 +36,9 @@ import SpotifyPlaylistsLibraryView from '@/views/Spotify/Library/Playlists';
 import PlaylistView from '@/views/Spotify/Playlist';
 import SpotifyView from '@/views/Spotify/Tablet';
 
-// specific sidebar components
-import LightSidebar from '@/components/sidebars/Light';
-import MusicSidebar from '@/components/sidebars/Music';
+// Footers
+import HomeNav from '@/components/Footer/Home';
+import LightNav from '@/components/Footer/Lights';
 
 import Speakers from '@/components/Speakers';
 import SpotifySearch from '@/components/Spotify/Search';
@@ -63,28 +62,33 @@ const router = new Router({
         layout: 'footer'
       },
       components: {
-        default: HomeView
+        default: HomeView,
+        footer: HomeNav
       }
-    },
-    {
-      path: '/modal',
-      name: 'modal',
-      meta: {
-        layout: 'home'
-      },
-      component: ModalView
     },
     {
       path: '/lights',
       name: 'lights',
       meta: {
-        layout: 'sidebar'
+        layout: 'footer'
       },
       components: {
         default: LightView,
-        sidebar: LightSidebar
+        footer: LightNav
       }
     },
+  {
+    path: '/light/:id',
+    name: 'light',
+    meta: {
+      layout: 'footer'
+    },
+    components: {
+      default: LightView,
+      footer: LightNav
+    }
+  },
+
 
     {
       path: '/spotify',
@@ -164,7 +168,6 @@ const router = new Router({
       },
       components: {
         default: MusicView,
-        sidebar: MusicSidebar
       }
     },
     {
@@ -175,7 +178,6 @@ const router = new Router({
       },
       components: {
         default: ArtistView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -187,7 +189,6 @@ const router = new Router({
       },
       components: {
         default: AlbumView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -199,7 +200,6 @@ const router = new Router({
       },
       components: {
         default: SpotifyTracksLibraryView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -211,7 +211,6 @@ const router = new Router({
       },
       components: {
         default: SpotifyAlbumsLibraryView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -223,7 +222,6 @@ const router = new Router({
       },
       components: {
         default: SpotifyArtistsLibraryView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -235,7 +233,6 @@ const router = new Router({
       },
       components: {
         default: SpotifyPlaylistsLibraryView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -244,7 +241,6 @@ const router = new Router({
       name: 'playlist',
       components: {
         default: PlaylistView,
-        sidebar: MusicSidebar,
         navbar: SpotifyNavbar
       }
     },
@@ -253,7 +249,6 @@ const router = new Router({
       name: 'search',
       components: {
         default: SpotifySearchView,
-        sidebar: MusicSidebar
       },
       children: [
         {

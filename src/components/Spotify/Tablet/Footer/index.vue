@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- <player display="mini" /> -->
-    <player />
     <navigation />
+    <player />
   </div>
 </template>
 

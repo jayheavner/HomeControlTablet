@@ -12,6 +12,7 @@
         <div class="level-right">
           <device-picker class="level-item" />
           <volume-bar class="level-item" />
+          <icon name="expand-arrows-alt" />
         </div>
       </div>
     </div>

@@ -9,11 +9,10 @@
           v-for="(id, index) in selectedZone.entities"
           :key="index"
           :class="computeColumns"
-          class="column is-one-third has-text-centered"
+          class="column has-text-centered"
         >
-          <brightness :id="id" />
-
           <power :id="id" />
+          <brightness :id="id" />
           <name :id="id" class="has-text-light" />
         </div>
       </div>
@@ -23,8 +22,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { buildList } from '@/utils';
-import { LightModel, ZoneModel } from '@/models';
 
 import Brightness from '@/components/Light/Brightness';
 import Power from '@/components/Light/Power';
@@ -52,41 +49,35 @@ export default {
       loaded: 'homeassistant/getIsConnected'
     }),
     computeColumns() {
-      return '';
       const numLights = this.selectedZone.entities.length;
-      if (numLights % 3 === 0) return 'is-one-third';
+      if (numLights < 6 || numLights % 3 === 0) return 'is-one-third';
       else if (numLights % 4 === 0) return 'is-one-quarter';
       else return 'is-one-fifth';
-      //else if (numLights % 5 === 0) return "is-one-fifth";
+    }
+  },
+  watch: {
+    '$route.params.id': {
+      handler() {
+        this.initializeLights(this.$route.params.id);
+      }
+    },
+    loaded: {
+      handler(value) {
+        debugger;
+      }
     }
   },
   mounted() {
-    this.initializeLights();
+    console.log(`loading lights for ${this.$route.params.id}`);
+    this.initializeLights(this.$route.params.id);
   },
   methods: {
     ...mapActions({
       initLights: 'Light/initialize'
     }),
-    async initializeLights() {
-      // const all = await api.ha.getStates();
-      // const zones = this.buildList(ZoneModel, await api.ha.getState('group.lights_view'), all);
-
-      // const lights = this.buildList(LightModel, await api.ha.getState('group.house_lights'), all);
-
-      // const lights = buildList(LightModel, all.data, 'group.house_lights');
-      // const zones = buildList(ZoneModel, all.data, 'group.lights_view');
-
-      await this.initLights();
+    async initializeLights(zone) {
+      await this.initLights(zone);
       console.log(this.lights);
-    },
-    buildList(type, entities, allEntities) {
-      let list = [];
-      entities.data.attributes.entity_id.forEach(entity => {
-        const result = allEntities.data.find(all => all.entity_id === entity);
-        var o = new type(result);
-        list.push(o);
-      });
-      return list;
     },
     getState(light) {
       return light.power ? 'is-info' : 'is-light';
@@ -118,3 +109,11 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="sass">
+
+.columns
+  margin:
+    left: 0
+    right: 0
+</style>
