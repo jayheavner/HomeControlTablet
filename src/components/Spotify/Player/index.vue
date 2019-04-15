@@ -66,13 +66,22 @@ export default {
 //   min-height: 100vh
 //   flex-direction: column
 
-.player-mini
-  height: 100px;
+.player-micro
+  height: 82px;
+  position: fixed
+  bottom: 50px
+  width: calc(100%)
+  z-index: 2
+  // background: $c-shark
+    // position: absolute;
+    // right: 0;
+    // left: 0;
+    // top: 348px;
 
   .columns
     align-items: center
 
-.player
+.player,
   flex-shrink: 0
   position: fixed
   bottom: 0
