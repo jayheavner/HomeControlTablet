@@ -17,6 +17,7 @@ const getters = {
 
 const mutations = {
   SET_LIGHTS(state, lights) {
+    debugger;
     state.lights = lights;
   },
   SET_ZONES(state, zones) {
@@ -42,6 +43,7 @@ const actions = {
       all
     );
 
+    debugger;
     commit('SET_LIGHTS', lights);
 
     commit('SET_ZONES', zones);
@@ -58,6 +60,7 @@ const actions = {
       { entity_id: light.entity_id },
       light
     );
+    debugger;
     commit('SET_LIGHTS', lights);
   },
   updateFromDashboard({ commit }, light) {
@@ -67,6 +70,7 @@ const actions = {
       { entity_id: light.entity_id },
       light
     );
+    debugger;
     commit('SET_LIGHTS', lights);
   },
   update({ commit }, light) {
@@ -76,6 +80,7 @@ const actions = {
       { entity_id: light.entity_id },
       light
     );
+    debugger;
     commit('SET_LIGHTS', lights);
   },
   changeZone({ commit }, entity_id) {
