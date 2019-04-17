@@ -2,7 +2,7 @@ import Light from './light';
 
 const actions = {
   update(context, msg) {
-    Light.actions.update(context, msg);
+    //Light.actions.update(context, msg);
   }
 };
 

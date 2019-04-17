@@ -42,6 +42,7 @@ const actions = {
     );
 
     // const lights = buildList(LightModel, msg, 'group.house_lights');
+    debugger;
     commit('SET_LIGHTS', lights);
 
     // const zones = buildList(ZoneModel, msg, 'group.lights_view');
@@ -55,6 +56,7 @@ const actions = {
       { entity_id: light.entity_id },
       light
     );
+    debugger;
     commit('SET_LIGHTS', lights);
   },
   changeZone({ commit }, entity_id) {
