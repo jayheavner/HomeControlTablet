@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 import vuexPersistedstate from 'vuex-persistedstate';
 
 import homeassistant from './modules/home-assistant';
-// import lights from './modules/lights';
 import music from './modules/music';
 import speakers from './modules/speakers';
 import Media_player from './ha_base_types/media_player';
@@ -22,7 +21,6 @@ import spotifyAuth from './spotify/auth';
 import spotifySearch from './spotify/search';
 import library from './spotify/library';
 import playlist from './spotify/playlist';
-import user from './spotify/user';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -35,11 +33,6 @@ const authState = vuexPersistedstate({
     'spotifyAuth.refreshToken',
     'spotifyAuth.expiryTime'
   ]
-  // reducer: state => ({
-  //   spotifyAuth: {
-  //     refreshToken: state.spotifyAuth.refreshToken
-  //   }
-  // }),
 });
 
 const libraryState = vuexPersistedstate({
@@ -70,12 +63,13 @@ export default new Vuex.Store({
     player,
     track,
     playlist,
-    user,
     spotifyAuth,
     spotifySearch,
-    library
+    library,
+    sonosTrack,
+    sonosTransportState,
+    sonosZone
   },
   plugins: [authState, libraryState],
   strict: debug
 });
-
