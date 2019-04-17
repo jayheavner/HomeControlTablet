@@ -3,7 +3,8 @@ module.exports = {
     devtool: 'source-map'
   },
   transpileDependencies: [/\bvue-awesome\b/],
-  baseUrl: process.env.NODE_ENV === 'production' ? '/control/' : '/',
+  publicPath: '/',
+  // baseUrl: process.env.NODE_ENV === 'production' ? '/control/' : '/',
 
   devServer: {
     port: 8080
