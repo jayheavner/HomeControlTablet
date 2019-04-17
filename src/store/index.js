@@ -65,10 +65,7 @@ export default new Vuex.Store({
     playlist,
     spotifyAuth,
     spotifySearch,
-    library,
-    sonosTrack,
-    sonosTransportState,
-    sonosZone
+    library
   },
   plugins: [authState, libraryState],
   strict: debug
