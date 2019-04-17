@@ -1,0 +1,53 @@
+/* full-height columns */
+
+.columns {
+  &.is-fullheight {
+    // min-height: calc(100vh - (#{$navbar-height} - .75rem));
+    // max-height: calc(100vh - (#{$navbar-height} - .75rem));
+    min-height: calc(100vh + 0.75rem); // bulma columns have a top-margin of -0.75rem
+    max-height: calc(100vh + 0.75rem); // bulma columns have a top-margin of -0.75rem
+    height: calc(100vh - (#{$navbar-height} - .75rem));
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    &.column {
+      overflow-y: auto;
+    }
+  }
+}
+
+// sidebar
+.is-sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  background-image: linear-gradient(to top right, rgb(146, 228, 221), rgb(76, 119, 221));
+
+  &>.is-aligned-bottom {
+    margin-top: auto;
+
+    &>button {
+      width: 70%;
+    }
+  }
+}
+
+.tile {
+  &.is-gapless {
+    &.tile.is-parent {
+      align-items: center;
+      padding: 0;
+
+      &.is-vertical {
+        &>.tile.is-child:not(:last-child) {
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+
+    &.tile.is-child {
+      margin: 0 !important;
+    }
+  }
+}
