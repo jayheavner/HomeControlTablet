@@ -1,0 +1,65 @@
+{
+  "name": "home-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/vue-fontawesome": "^0.1.5",
+    "ajv": "^6.9.1",
+    "axios": "^0.18.0",
+    "bulma": "^0.7.4",
+    "bulma-helpers": "^0.3.6",
+    "chalk": "^2.4.2",
+    "colors": "^1.3.3",
+    "dotenv": "^6.2.0",
+    "fuse.js": "^3.4.4",
+    "is-json": "^2.0.1",
+    "moment": "^2.24.0",
+    "mqtt": "^2.18.8",
+    "mqtt-emitter": "^1.2.4",
+    "optiscroll": "^3.2.1",
+    "sass-loader": "^7.1.0",
+    "spotify-web-api-node": "^4.0.0",
+    "vue": "^2.5.21",
+    "vue-awesome": "^3.3.1",
+    "vue-js-modal": "^1.3.28",
+    "vue-lazyload": "^1.2.6",
+    "vue-moment": "^4.0.0",
+    "vue-router": "^3.0.2",
+    "vue-skycons": "^1.0.5",
+    "vue-slider-component": "^3.0.26",
+    "vuex": "^3.1.0",
+    "vuex-persistedstate": "^2.5.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.2.2",
+    "node-sass": "^4.11.0",
+    "normalize-scss": "^7.0.1",
+    "prettier": "^1.16.4",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
