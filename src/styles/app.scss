@@ -23,8 +23,8 @@ $dimensions: 16,
 $box-color: #fff;
 @import url('https://fonts.googleapis.com/css?family=Roboto|Thasadith:400,700');
 // Now, import the full package
-@import "vendors/bulma";
-@import 'vendors/bulma-helpers';
+@import "vendors/bulma/bulma";
+@import 'vendors/bulma-helpers/bulma-helpers';
 // tile.is-gapless {
 //   .tile.is-parent {
 //     padding: 0;
