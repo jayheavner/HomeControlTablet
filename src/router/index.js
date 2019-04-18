@@ -1,11 +1,7 @@
-/* eslint-disable */
 import Vue from 'vue';
 import Router from 'vue-router';
 
 Vue.use(Router);
-
-// import auth from '@/api/spotify/auth';
-// Vue.use(auth);
 
 //layouts
 import FullScreen from '@/layouts/FullScreen';
@@ -38,6 +34,7 @@ import SpotifyView from '@/views/Spotify/Tablet';
 // Footers
 import HomeNav from '@/components/Footer/Home';
 import LightNav from '@/components/Footer/Lights';
+import MusicNav from '@/components/Footer/Music';
 
 import Speakers from '@/components/Speakers';
 import SpotifySearch from '@/components/Spotify/Search';
@@ -46,7 +43,6 @@ import SpotifyGenre from '@/components/Spotify/Genre';
 
 // Spotify navbar
 import SpotifyNavbar from '@/components/Spotify/Navbar';
-import SpotifyTabletFooter from '@/components/Spotify/Tablet/Footer';
 
 // spotify stuff
 import spotifyLogout from '@/views/Spotify/Logout';
@@ -76,19 +72,17 @@ const router = new Router({
         footer: LightNav
       }
     },
-  {
-    path: '/light/:id',
-    name: 'light',
-    meta: {
-      layout: 'footer'
+    {
+      path: '/light/:id',
+      name: 'light',
+      meta: {
+        layout: 'footer'
+      },
+      components: {
+        default: LightView,
+        footer: LightNav
+      }
     },
-    components: {
-      default: LightView,
-      footer: LightNav
-    }
-  },
-
-
     {
       path: '/music',
       name: 'music',
@@ -97,7 +91,7 @@ const router = new Router({
       },
       components: {
         default: SpotifyView,
-        footer: SpotifyTabletFooter
+        footer: MusicNav
       },
       children: [
         {
@@ -108,7 +102,7 @@ const router = new Router({
           },
           components: {
             default: Speakers,
-            footer: SpotifyTabletFooter
+            footer: MusicNav
           }
         },
         {
@@ -119,7 +113,7 @@ const router = new Router({
           },
           components: {
             default: SpotifySearch,
-            footer: SpotifyTabletFooter
+            footer: MusicNav
           }
         },
         {
@@ -130,7 +124,7 @@ const router = new Router({
           },
           components: {
             default: SpotifyBrowse,
-            footer: SpotifyTabletFooter
+            footer: MusicNav
           },
           children: [
             {
@@ -141,11 +135,11 @@ const router = new Router({
               },
               components: {
                 default: SpotifyGenre,
-                footer: SpotifyTabletFooter
+                footer: MusicNav
               }
             }
           ]
-        },
+        }
       ]
     },
     {
@@ -226,7 +220,7 @@ const router = new Router({
       path: '/search',
       name: 'search',
       components: {
-        default: SpotifySearchView,
+        default: SpotifySearchView
       },
       children: [
         {

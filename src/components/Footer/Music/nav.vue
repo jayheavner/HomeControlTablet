@@ -1,29 +1,25 @@
 <template>
   <nav class="navbar opaque-dark is-fixed-bottom">
+    <div class="navbar-brand">
+      <router-link :to="{ name: 'home' }" class="navbar-item">
+        <icon name="regular/arrow-alt-circle-left" scale="2.2" />
+      </router-link>
+    </div>
     <div class="navbar-menu">
       <div class="navbar-start is-expanded">
-        <router-link :to="{ name: 'home' }" class="navbar-item">
-          <icon name="home" />
-          Home
-        </router-link>
-
         <router-link :to="{ name: 'spotify-speakers' }" class="navbar-item">
-          <icon name="music" />
           Rooms
         </router-link>
 
         <router-link :to="{ name: 'spotify-search' }" class="navbar-item">
-          <icon name="search" />
           Search
         </router-link>
 
         <router-link :to="{ name: 'spotify-browse' }" class="navbar-item">
-          <icon name="compass" />
           Browse
         </router-link>
 
         <router-link :to="{ name: 'spotify-library' }" class="navbar-item">
-          <icon name="archive" />
           Library
         </router-link>
       </div>
@@ -53,8 +49,6 @@ a
     color: $c-shark
 
 .fa-icon
-  height: 20px
-  width: 20px
   padding-right: 5px
 
 .navbar-item

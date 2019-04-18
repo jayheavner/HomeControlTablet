@@ -22,6 +22,7 @@
     "mqtt-emitter": "^1.2.4",
     "optiscroll": "^3.2.1",
     "sass-loader": "^7.1.0",
+    "simple-keyboard": "^2.20.8",
     "spotify-web-api-node": "^4.0.0",
     "vue": "^2.5.21",
     "vue-awesome": "^3.5.1",

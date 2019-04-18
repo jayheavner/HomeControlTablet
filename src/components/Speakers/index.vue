@@ -3,13 +3,6 @@
     <span>loading...</span>
   </section>
   <section v-else>
-    <div class="columns">
-      <div class="column is-offset-1 has-text-light has-padding-top-25">
-        <div class="is-size-2">
-          speakers
-        </div>
-      </div>
-    </div>
     <section class="container">
       <div class="columns is-fullheight is-multiline">
         <div
@@ -67,6 +60,7 @@ export default {
 <style scoped lang="sass">
 .container
   padding:
+    top: 32px
     left: 32px
     right: 32px
 </style>
