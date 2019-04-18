@@ -21,68 +21,18 @@
 </template>
 
 <script type="text/javascript">
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'LightSidebar',
-  // components: {},
-  // props: {},
-  // data() {
-  //   return {
-  //     selectedLightZone: null
-  //   };
-  // },
-  created() {
-    console.log(`light zones ? ${JSON.stringify(this.zones, null, 2)}`);
-  },
-  // mounted: function() {
-  //   this.selectedLightZone = this.$route.params.id;
-  //   if (this.loaded) {
-  //     debugger;
-  //   } else {
-  //     debugger;
-  //   }
-  //   console.log(`Selected Light Zone > ${this.selectedLightZone}`);
-  //   console.log(
-  //     `STORE Selected Light Zone > ${JSON.stringify(
-  //       this.selectedZone,
-  //       null,
-  //       2
-  //     )}`
-  //   );
-  // },
   computed: {
     ...mapGetters({
       zones: 'Light/getZones'
-      // selectedZone: 'Light/getSelectedZone',
-      // loaded: 'homeassistant/getIsConnected'
     })
+  },
+  created() {
+    console.log(`light zones ? ${JSON.stringify(this.zones, null, 2)}`);
   }
-  // watch: {
-  //   zones: {
-  //     handler(zones) {
-  //       debugger;
-  //       this.selectZone(this.selectedLightZone);
-  //     }
-  //   }
-  // },
-
-  // methods: {
-  //   ...mapActions({
-  //     changeZone: 'Light/changeZone'
-  //   }),
-  //   isActive(z) {
-  //     return z.entity_id === this.selectedZone.entity_id;
-  //   },
-  //   selectZone(zone) {
-  //     this.changeZone(zone.entity_id).then(
-  //       response => {
-  //         console.log(`Changing light zone to ${zone.name}`);
-  //       },
-  //       err => {}
-  //     );
-  //   }
-  // }
 };
 </script>
 

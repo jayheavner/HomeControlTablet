@@ -1,5 +1,5 @@
 <template>
-  <div class="has-text-light">
+  <div class="has-text-light is-size-4">
     {{ name }}
   </div>
 </template>
@@ -8,9 +8,12 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'LightPower',
+  name: 'LightName',
   props: {
-    id: String
+    id: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     ...mapGetters({
@@ -25,32 +28,4 @@ export default {
 };
 </script>
 
-<style scoped lang="sass">
-
-.player-controls
-  display: flex
-  justify-content: center
-
-  &__button
-    background: none
-    border: 0
-    margin: auto 10px
-    color: $c-gray
-    font-size: 15px
-    cursor: pointer
-    outline: none
-
-    &:hover
-      color: $c-white
-
-    &--active
-      color: $c-green
-
-    &--play,
-    &--pause
-      font-size: 35px
-
-      &:hover
-        color: $c-white
-        transform: scale(1.1)
-</style>
+<style scoped lang="sass"></style>
