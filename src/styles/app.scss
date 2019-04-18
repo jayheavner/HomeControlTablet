@@ -4,7 +4,7 @@
 // @import vendors/bul
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
 // Needed for $gap
-@import "vendor/bulma/sass/utilities/initial-variables";
+@import "vendors/bulma/sass/utilities/initial-variables";
 $navbar-breakpoint: $tablet !default;
 $menu-label-color: $grey-lighter;
 $menu-item-color: $white-ter;
@@ -23,8 +23,8 @@ $dimensions: 16,
 $box-color: #fff;
 @import url('https://fonts.googleapis.com/css?family=Roboto|Thasadith:400,700');
 // Now, import the full package
-@import "vendor/bulma";
-@import 'vendor/bulma-helpers';
+@import "vendors/bulma";
+@import 'vendors/bulma-helpers';
 // tile.is-gapless {
 //   .tile.is-parent {
 //     padding: 0;
