@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar opaque-dark is-fixed-bottom">
+  <nav class="navbar opaque-dark is-fixed-bottom is-transparent">
     <div class="navbar-menu">
       <div class="navbar-start is-expanded">
         <router-link :to="{ name: 'lights' }" class="navbar-item">
@@ -47,14 +47,10 @@ export default {
 a
   color: white
   text-decoration: none
-
-  &.router-link-exact-active
-    background-color: white
-    color: $c-shark
+  &:hover
+    color: white
 
 .fa-icon
-  height: 20px
-  width: 20px
   padding-right: 5px
 
 .navbar-item

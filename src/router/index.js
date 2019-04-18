@@ -90,8 +90,8 @@ const router = new Router({
 
 
     {
-      path: '/spotify',
-      name: 'spotify',
+      path: '/music',
+      name: 'music',
       meta: {
         layout: 'footer'
       },
