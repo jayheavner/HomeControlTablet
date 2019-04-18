@@ -54,10 +54,7 @@
                   <div class="level-item">
                     <div class="level-item">
                       <span>
-                        <font-awesome-icon
-                          icon="caret-up"
-                          style="margin-bottom: .25rem;"
-                        />
+                        <icon name="caret-up" style="margin-bottom: .25rem;" />
                         {{ maxTemp }}&nbsp;&nbsp;&nbsp;
                       </span>
                     </div>
@@ -68,10 +65,7 @@
                     <div class="level-item">
                       <span>
                         &nbsp;&nbsp;&nbsp;{{ minTemp }}
-                        <font-awesome-icon
-                          icon="caret-down"
-                          style="margin-top: .25rem;"
-                        />
+                        <icon name="caret-down" style="margin-top: .25rem;" />
                       </span>
                     </div>
                   </div>
