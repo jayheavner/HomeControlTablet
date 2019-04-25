@@ -1,87 +1,74 @@
 <template>
   <div>
-    <input
-      :value="input"
-      class="input"
-      placeholder="Tap on the virtual keyboard to start"
-      @input="onInputChange"
-    />
-    <div class="simple-keyboard"></div>
+    <div class="control has-icons-right search">
+  <input class="input is-large search__input" type="search" placeholder="Search"  @focus="show" data-layout="compact">
+  <span class="icon is-medium is-right">
+    <icon name="search" />
+  </span>
+</div>
+    <vue-touch-keyboard :options="options" v-if="visible" :layout="layout" :cancel="hide" :accept="accept" :input="input" />
   </div>
 </template>
 
 <script>
 export default {
-  components: {
-
+  data() {
+    return {
+      visible: false,
+      layout: 'compact',
+      input: null,
+      options: {
+        useKbEvents: false,
+        preventClickEvent: false
+      }
+    };
   },
-  props: ['input', 'onInputChange'],
+
   methods: {
-    update(input) {
-      this.input = input;
+    accept(text) {
+      alert('Input text: ' + text);
+      this.hide();
     },
-    onInputChange(e) {
-      let input = e.target.value;
-      keyboard.setInput(input);
+
+    show(e) {
+      this.input = e.target;
+      this.layout = e.target.dataset.layout;
+
+      if (!this.visible) this.visible = true;
+    },
+
+    hide() {
+      this.visible = false;
     }
   }
 };
-import Keyboard from 'simple-keyboard';
-import 'simple-keyboard/build/css/index.css';
-
-let keyboard;
-
-keyboard = new Keyboard({
-  onChange: input => onChange(input),
-  onKeyPress: button => onKeyPress(button)
-});
-
-console.log(keyboard);
-
-function onChange(input) {
-  vueInstance.update(input);
-  console.log('Input changed', input);
-}
-
-function onKeyPress(button) {
-  console.log('Button pressed', button);
-
-  /**
-   * If you want to handle the shift and caps lock buttons
-   */
-  if (button === '{shift}' || button === '{lock}') handleShift();
-}
-
-function handleShift() {
-  let currentLayout = keyboard.options.layoutName;
-  let shiftToggle = currentLayout === 'default' ? 'shift' : 'default';
-
-  keyboard.setOptions({
-    layoutName: shiftToggle
-  });
-}
 </script>
 
-<style>
-app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="sass">
 
-input {
-  width: 100%;
-  height: 100px;
-  padding: 20px;
-  font-size: 20px;
-  border: none;
-  box-sizing: border-box;
-}
+input 
+  &.search
+    &__input
+      margin: 4px
+      width: 792px
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active
+        border-color: red
+        color: blue
+        
 
-.simple-keyboard {
-  max-width: 850px;
-}
+  &__btn
+    background: none
+    border: none
+    position: absolute
+    right: 5px
+    top: 0
+    bottom: 0
+    height: 16px
+    margin: auto 0
+    color: $c-shark
+    outline: none
+    pointer-events: none
 </style>
