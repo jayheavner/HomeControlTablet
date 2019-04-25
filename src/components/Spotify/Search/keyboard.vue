@@ -1,12 +1,25 @@
 <template>
   <div>
     <div class="control has-icons-right search">
-  <input class="input is-large search__input" type="search" placeholder="Search"  @focus="show" data-layout="compact">
-  <span class="icon is-medium is-right">
-    <icon name="search" />
-  </span>
-</div>
-    <vue-touch-keyboard :options="options" v-if="visible" :layout="layout" :cancel="hide" :accept="accept" :input="input" />
+      <input
+        class="input is-large search__input"
+        type="search"
+        placeholder="Search"
+        data-layout="compact"
+        @focus="show"
+      />
+      <span class="icon is-medium is-right">
+        <icon name="search" />
+      </span>
+    </div>
+    <vue-touch-keyboard
+      v-if="visible"
+      :options="options"
+      :layout="layout"
+      :cancel="hide"
+      :accept="accept"
+      :input="input"
+    />
   </div>
 </template>
 
@@ -46,7 +59,7 @@ export default {
 
 <style scoped lang="sass">
 
-input 
+input
   &.search
     &__input
       margin: 4px
@@ -57,7 +70,7 @@ input
       &.is-active
         border-color: red
         color: blue
-        
+
 
   &__btn
     background: none

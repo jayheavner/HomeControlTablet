@@ -80,6 +80,7 @@ export default {
 
     onKeyUp(e) {
       return;
+      // eslint-disable-next-line no-unreachable
       const { value } = e.target;
 
       if (value !== '' && value.length > 2) {

@@ -27,9 +27,9 @@ Vue.use(VModal, {
 Vue.use(VueMoment);
 Vue.use(VueLazyload);
 
-import Keyboard from 'simple-keyboard';
-import 'simple-keyboard/build/css/index.css';
-Vue.component('keyboard', Keyboard);
+// import Keyboard from 'simple-keyboard';
+// import 'simple-keyboard/build/css/index.css';
+// Vue.use(Keyboard);
 
 import VueTouchKeyboard from 'vue-touch-keyboard';
 import 'vue-touch-keyboard/dist/vue-touch-keyboard.css'; // load default style
