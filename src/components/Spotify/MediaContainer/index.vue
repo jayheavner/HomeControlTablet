@@ -23,18 +23,18 @@ export default {
     padding: 7px
     vertical-align: top
 
-+breakpoint(medium)
-  .media-container
-    .media-object
-      width: 33%
+// +breakpoint(medium)
+//   .media-container
+//     .media-object
+//       width: 33%
 
-+breakpoint(large)
-  .media-container
-    .media-object
-      width: 25%
+// +breakpoint(large)
+//   .media-container
+//     .media-object
+//       width: 25%
 
-+breakpoint(xlarge)
-  .media-container
-    .media-object
-      width: 20%
+// +breakpoint(xlarge)
+//   .media-container
+//     .media-object
+//       width: 20%
 </style>

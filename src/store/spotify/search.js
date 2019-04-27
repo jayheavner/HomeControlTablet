@@ -149,15 +149,17 @@ const actions = {
     var options = {
       shouldSort: true,
       includeScore: true,
-      tokenize: true,
+      tokenize: false,
       // matchAllTokens: true,
       threshold: 0.2,
       location: 0,
-      distance: 50,
-      maxPatternLength: 32,
-      minMatchCharLength: 2,
-      keys: ['name']
+      distance: 20,
+      maxPatternLength: 12,
+      minMatchCharLength: 2
     };
+
+    console.dir(rootGetters['library/albums']);
+    options.keys = ['name'];
     let artists = savedItemsSearch(
       rootGetters['library/artists'],
       options,
@@ -165,10 +167,11 @@ const actions = {
     );
 
     options.keys = [
-      { name: 'album.artists.name', weight: 0.6 },
-      { name: 'album.name', weight: 0.2 },
-      { name: 'album.tracks.items.name', weight: 0.1 }
+      { name: 'album.artists.name', weight: 0.3 },
+      { name: 'album.name', weight: 0.3 },
+      { name: 'album.tracks.items.name', weight: 0.3 }
     ];
+
     console.dir(rootGetters['library/albums']);
     let albums = savedItemsSearch(
       rootGetters['library/albums'],
@@ -177,8 +180,8 @@ const actions = {
     );
 
     options.keys = [
-      { name: 'track.name', weight: 0.6 },
-      { name: 'track.artists.name', weight: 0.3 },
+      { name: 'track.name', weight: 0.7 },
+      { name: 'track.artists.name', weight: 0.2 },
       { name: 'track.album.name', weight: 0.1 }
     ];
 
@@ -189,21 +192,17 @@ const actions = {
       query
     );
 
-    const combined = [...artists, ...albums, ...tracks];
-    const sorted = combined.sort((a, b) => {
-      if (a.score === b.score) {
-        let atype = -1;
-        if (a.item.track) atype = 0;
-        else if (a.item.album) atype = 1;
-        let btype = -1;
-        if (b.item.track) btype = 0;
-        else if (b.item.album) btype = 1;
-        return atype - btype;
-      }
-      return a.score - b.score;
-    });
+    options.keys = ['track.name'];
+
+    // options.keys = ['track.name'];
+    let test11 = savedItemsSearch(
+      rootGetters['library/tracks'],
+      options,
+      query
+    );
+    const combined = [...artists, ...albums, ...tracks, ...test11];
+    const sorted = sortSearch(combined);
     const topPick = sorted[0];
-    debugger;
     try {
       const response = await api.spotify.search.search(query);
 
@@ -349,6 +348,21 @@ const actions = {
 const savedItemsSearch = (array, options, query) => {
   var fuse = new Fuse(array, options); // "list" is the item array
   return fuse.search(query);
+};
+
+const sortSearch = array => {
+  return array.sort((a, b) => {
+    if (a.score === b.score) {
+      let atype = -1;
+      if (a.item.track) atype = 0;
+      else if (a.item.album) atype = 1;
+      let btype = -1;
+      if (b.item.track) btype = 0;
+      else if (b.item.album) btype = 1;
+      return atype - btype;
+    }
+    return a.score - b.score;
+  });
 };
 
 const module = {

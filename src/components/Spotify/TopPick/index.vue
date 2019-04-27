@@ -1,61 +1,61 @@
 <template>
   <div>
     <template v-if="topPick.type">
-      <media-container>
+      <div class="columns">
         <media-object
           :id="topPick.id"
           :key="topPick.id"
+          class="column is-3"
           :uri="topPick.uri"
           :name="topPick.name"
           :type="topPick.type"
           :cover-img="topPick.images"
         />
-      </media-container>
+      </div>
     </template>
 
     <template v-if="topPick.track">
-      <media-container>
+      <div class="columns">
         <media-object
           :id="topPick.track.id"
           :key="topPick.track.id"
+          class="column is-3"
           :uri="topPick.track.uri"
           :name="topPick.track.name"
           :artists="topPick.track.artists"
           :type="topPick.track.type"
           :cover-img="topPick.track.album.images"
         />
-      </media-container>
+      </div>
     </template>
 
     <template v-if="topPick.album">
-      <media-container>
+      <div class="columns">
         <media-object
           :id="topPick.album.id"
           :key="topPick.album.id"
+          class="column is-3"
           :uri="topPick.album.uri"
           :name="topPick.album.name"
           :artists="topPick.album.artists"
           :type="topPick.album.type"
           :cover-img="topPick.album.images"
         />
-      </media-container>
+      </div>
     </template>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import router from '@/router';
 
-import MediaObject from '@/components/Spotify/MediaObject';
-import MediaContainer from '@/components/Spotify/MediaContainer';
+import MediaObject from '@/components/Spotify/MediaObject/Horizontal';
 
 export default {
   name: 'SearchResultView',
 
   components: {
-    MediaObject,
-    MediaContainer
+    MediaObject
   },
 
   computed: {

@@ -66,7 +66,9 @@ export default {
       this.$emit('onChange', input);
     },
     onKeyPress(button) {
-      if (button.includes('{') && button.includes('}')) {
+      if (button === '{enter}') {
+        this.$emit('enter', true);
+      } else if (button.includes('{') && button.includes('}')) {
         this.handleLayoutChange(button);
       }
     },
@@ -127,11 +129,6 @@ export default {
 .simple-keyboard.hg-theme-ios .hg-row:nth-child(2) {
   margin-left: 18px;
 }
-/* .simple-keyboard.hg-theme-ios.hg-theme-default {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 3px;
-  border-radius: 5px;
-} */
 .simple-keyboard.hg-theme-ios.hg-theme-default.hg-layout-custom {
   background-color: #e5e5e5;
   padding: 3px;

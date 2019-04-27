@@ -39,14 +39,14 @@ request.interceptors.response.use(
   async error => {
     if (isFetchingToken) return;
     const { status, data } = error.response;
-    debugger;
     const accessTokenResponse = await auth.get('/');
     await store.dispatch(
       'spotifyAuth/setAccessToken',
       accessTokenResponse.data.accessToken
     );
     isFetchingToken = false;
-    //location.reload();
+    if (status === 401) location.reload();
+    else debugger;
   }
 );
 
