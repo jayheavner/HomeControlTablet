@@ -70,12 +70,9 @@ dotenv.config();
 Vue.config.productionTip = false;
 
 const initialize = async () => {
-  const spotifyAuth = await store.getters['spotifyAuth/isAuthenticated'];
-  if (spotifyAuth) {
-    await store.dispatch('player/initialize');
-    await store.dispatch('player/setPlayback');
-    await store.dispatch('library/load');
-  }
+  await store.dispatch('player/initialize');
+  await store.dispatch('player/setPlayback');
+  await store.dispatch('library/load');
 };
 
 new Vue({
