@@ -5,7 +5,7 @@ export default {
     q,
     type = 'album,artist,playlist,track',
     offset,
-    limit,
+    limit = 50,
     market = 'US',
     include_external
   ) {

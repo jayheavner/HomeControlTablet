@@ -1,3 +1,4 @@
+import { search } from '@/utils/spotifySearch';
 import api from '@/api';
 import Fuse from 'fuse.js';
 
@@ -146,11 +147,46 @@ const actions = {
     dispatch('requestSearch');
     dispatch('setSearchQuery', query);
 
+    var a = search(query);
+    var results = await dispatch('searchAcross', {
+      query: query,
+      tokenize: false
+    });
+
+    let sorted = sortSearch(results);
+    let topPick = '';
+    if (sorted[0] < 0.05) topPick = sorted[0];
+    else
+      results = await dispatch('searchAcross', {
+        query: query,
+        tokenize: true
+      });
+    sorted = sortSearch(results);
+    topPick = '';
+    if (sorted[0] < 0.05) topPick = sorted[0];
+    try {
+      const response = await api.spotify.search.search(query);
+
+      debugger;
+      dispatch('requestSearchSuccess', {
+        ...topPick,
+        topPick: topPick.item,
+        ...response.data
+      });
+    } catch (e) {
+      dispatch('requestSearchError', e);
+    }
+  },
+  async searchAcross({ rootGetters }, payload) {
+    const query = payload.query;
+    const tokenize = payload.tokenize;
+    console.log(`query < ${query}`);
+    console.log(`tokenize < ${tokenize}`);
     var options = {
       shouldSort: true,
       includeScore: true,
-      tokenize: false,
-      // matchAllTokens: true,
+      tokenize: tokenize,
+      matchAllTokens: true,
       threshold: 0.2,
       location: 0,
       distance: 20,
@@ -200,22 +236,8 @@ const actions = {
       options,
       query
     );
-    const combined = [...artists, ...albums, ...tracks, ...test11];
-    const sorted = sortSearch(combined);
-    const topPick = sorted[0];
-    try {
-      const response = await api.spotify.search.search(query);
-
-      dispatch('requestSearchSuccess', {
-        ...topPick,
-        topPick: topPick.item,
-        ...response.data
-      });
-    } catch (e) {
-      dispatch('requestSearchError', e);
-    }
+    return [...artists, ...albums, ...tracks, ...test11];
   },
-
   /* ALBUMS */
   requestGetAlbums({ commit }) {
     commit('REQUEST_GET_ALBUMS');
